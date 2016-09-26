@@ -14,6 +14,7 @@ use yii\helpers\Url;
 $model = new CalculateDelivery();
 ?>
 
+
 <div class="btn-popup">
     <a href="#" class="close-popup">Close</a>
     <div class="popup">
@@ -50,3 +51,5 @@ $model = new CalculateDelivery();
 
     </div>
 </div>
+
+
