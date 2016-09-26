@@ -8,6 +8,8 @@ use yii\web\Controller;
 use yii\filters\VerbFilter;
 use app\models\LoginForm;
 use app\models\ContactForm;
+use app\models\forms\CalculateDelivery;
+use yii\web\BadRequestHttpException;
 
 class SiteController extends Controller
 {
@@ -60,7 +62,28 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
+        $this->layout  = "bootstrap";
         return $this->render('index');
+    }
+    public function actionCalculate()
+    {
+        $req = Yii::$app->getRequest();
+        $model = new CalculateDelivery();
+        if(!$req->getIsAjax() || !$model->load($req->post())) {
+            throw new BadRequestHttpException();
+        }
+
+        if(!$model->sendForm()) {
+            $errors = [];
+            foreach($model->getErrors() as $attr => $attrErrors) {
+                $errors = array_merge($errors, $attrErrors);
+            }
+            $message = Yii::t('app', 'An error occurred');
+            $message .= "\n" . implode("\n", $errors);
+            throw new BadRequestHttpException($message);
+        }
+
+        return Yii::t('app', 'Your request has been sent successfully');
     }
 
     /**

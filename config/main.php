@@ -26,20 +26,7 @@ $config = [
         'errorHandler' => [
             'errorAction' => 'site/error',
         ],
-        'mail' => [
-            'class'            => 'zyx\phpmailer\Mailer',
-            'viewPath'         => '@common/mail',
-            'useFileTransport' => false,
-            'config'           => [
-                'mailer'     => 'smtp',
-                'host'       => 'smtp.yandex.ru',
-                'port'       => '465',
-                'smtpsecure' => 'ssl',
-                'smtpauth'   => true,
-                'username'   => 'mysmtplogin@example.ru',
-                'password'   => 'mYsmTpPassword',
-            ],
-        ],
+        'mailer' => require(__DIR__ . '/components/mailer.php'),
         'log' => [
             'traceLevel' => YII_DEBUG ? 3 : 0,
             'targets' => [

@@ -30,8 +30,8 @@ class MainAsset extends  AssetBundle{
 
     public $depends = [
         'yii\web\YiiAsset', // yii.js, jquery.js
-        'yii\bootstrap\BootstrapAsset', // bootstrap.css
-        'yii\bootstrap\BootstrapPluginAsset' // bootstrap.js
+        //'yii\bootstrap\BootstrapAsset', // bootstrap.css
+        //'yii\bootstrap\BootstrapPluginAsset' // bootstrap.js
     ];
 
     public $jsOptions = [
